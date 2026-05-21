@@ -2,17 +2,22 @@ Imports DevExpress.AIIntegration.Reporting
 
 Namespace Reporting.Generation.Console
 
+    ' Console host for interactive Prompt-to-Report generation.
     Public Class ConsoleAIReportGenerationHost
         Implements IAIReportGenerationHost
 
+        ' Tracks where dynamic status lines are printed.
         Private currentCursorTop As Integer
 
+        ' Indicates whether status output is printed for the first time.
         Private isFirstStatusLine As Boolean = True
 
+        ' Stores the latest status value to detect status changes.
         Private lastStatus As String = String.Empty
 
         Private Const MenuInstructionsOffset As Integer = 2
 
+        ' Request clarification from the user (choice list or free text).
         Public Function ClarifyPromptAsync(ByVal request As PromptClarificationQuestion) As Task(Of PromptClarificationAnswer)
             ClearStatusLines()
             Me.DisplayQuestion(request.Text)
@@ -23,6 +28,7 @@ Namespace Reporting.Generation.Console
             End If
         End Function
 
+        ' Clear previously rendered status lines before showing a question.
         Private Sub ClearStatusLines()
             If Not isFirstStatusLine Then
                 Try
@@ -35,11 +41,13 @@ Namespace Reporting.Generation.Console
             End If
         End Sub
 
+        ' Clear a single console line by overwriting it with spaces.
         Private Sub ClearLine(ByVal lineNumber As Integer)
             System.Console.SetCursorPosition(0, lineNumber)
             System.Console.Write(New String(" "c, System.Console.BufferWidth - 1))
         End Sub
 
+        ' Display a clarification question in a highlighted color.
         Private Sub DisplayQuestion(ByVal questionText As String)
             System.Console.ForegroundColor = ConsoleColor.Cyan
             System.Console.WriteLine()
@@ -48,6 +56,7 @@ Namespace Reporting.Generation.Console
             System.Console.WriteLine()
         End Sub
 
+        ' Handle clarification questions with predefined options.
         Private Function HandleChoiceQuestion(ByVal choices As IReadOnlyList(Of String)) As Task(Of PromptClarificationAnswer)
             Dim selectedIndex = Me.ShowInteractiveMenu(choices)
             isFirstStatusLine = True
@@ -58,6 +67,7 @@ Namespace Reporting.Generation.Console
             Return Task.FromResult(PromptClarificationAnswer.FromValue(choices(selectedIndex)))
         End Function
 
+        ' Handle clarification questions that require a text response.
         Private Function HandleTextInputQuestion() As Task(Of PromptClarificationAnswer)
             System.Console.ForegroundColor = ConsoleColor.DarkGray
             System.Console.WriteLine("(Press Enter without text to cancel)")
@@ -73,6 +83,7 @@ Namespace Reporting.Generation.Console
             Return Task.FromResult(PromptClarificationAnswer.FromValue(answer))
         End Function
 
+        ' Render an interactive menu and return the selected option index.
         Private Function ShowInteractiveMenu(ByVal choices As IReadOnlyList(Of String)) As Integer
             Dim selectedIndex As Integer = 0
             Dim startTop = System.Console.CursorTop
@@ -89,6 +100,7 @@ Namespace Reporting.Generation.Console
             End While
         End Function
 
+        ' Draw all menu items for the current selection state.
         Private Sub RenderMenuItems(ByVal choices As IReadOnlyList(Of String), ByVal selectedIndex As Integer, ByVal startTop As Integer)
             For i As Integer = 0 To choices.Count - 1
                 System.Console.SetCursorPosition(0, startTop + MenuInstructionsOffset + i)
@@ -96,6 +108,7 @@ Namespace Reporting.Generation.Console
             Next
         End Sub
 
+        ' Draw one menu item with highlighted styling for the selected row.
         Private Sub RenderMenuItem(ByVal text As String, ByVal isSelected As Boolean)
             If isSelected Then
                 System.Console.BackgroundColor = ConsoleColor.Gray
@@ -110,6 +123,7 @@ Namespace Reporting.Generation.Console
             System.Console.Write(New String(" "c, padding))
         End Sub
 
+        ' Process keyboard input and update the selected item.
         Private Function ProcessKeyInput(ByRef selectedIndex As Integer, ByVal itemCount As Integer) As Integer?
             Dim key = System.Console.ReadKey(True)
             Select Case key.Key
@@ -128,6 +142,7 @@ Namespace Reporting.Generation.Console
             End Select
         End Function
 
+        ' Receive progress updates from the report generation workflow.
         Public Sub NotifyAsync(ByVal status As String, ByVal reasoning As String) Implements IAIReportGenerationHost.NotifyAsync
             Dim statusChanged As Boolean = Not Equals(lastStatus, status)
             lastStatus = status
@@ -138,6 +153,7 @@ Namespace Reporting.Generation.Console
             End If
         End Sub
 
+        ' Print initial status and reasoning lines.
         Private Sub DisplayInitialStatus(ByVal status As String, ByVal reasoning As String)
             System.Console.WriteLine($"Status: {status}")
             If Not String.IsNullOrEmpty(reasoning) Then
@@ -148,6 +164,7 @@ Namespace Reporting.Generation.Console
             isFirstStatusLine = False
         End Sub
 
+        ' Update status output in-place when possible.
         Private Sub UpdateStatus(ByVal status As String, ByVal reasoning As String, ByVal statusChanged As Boolean)
             Try
                 If statusChanged Then
@@ -160,6 +177,7 @@ Namespace Reporting.Generation.Console
             End Try
         End Sub
 
+        ' Re-render both status and reasoning lines.
         Private Sub UpdateBothLines(ByVal status As String, ByVal reasoning As String)
             ClearLine(currentCursorTop - 1)
             System.Console.SetCursorPosition(0, currentCursorTop - 1)
@@ -171,6 +189,7 @@ Namespace Reporting.Generation.Console
             End If
         End Sub
 
+        ' Re-render only the reasoning line when status text has not changed.
         Private Sub UpdateReasoningOnly(ByVal reasoning As String)
             Me.ClearLine(currentCursorTop)
             System.Console.SetCursorPosition(0, currentCursorTop)
@@ -179,6 +198,7 @@ Namespace Reporting.Generation.Console
             End If
         End Sub
 
+        ' Fall back to plain output when cursor-based updates fail.
         Private Sub FallbackStatusDisplay(ByVal status As String, ByVal reasoning As String)
             System.Console.WriteLine()
             System.Console.WriteLine($"Status: {status}")

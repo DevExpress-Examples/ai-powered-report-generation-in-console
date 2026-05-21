@@ -129,7 +129,8 @@
 ''' 
 '''     // Build a generation request from the user prompt.
 '''     DevExpress.AIIntegration.Reporting.Common.Extensions.PromptToReportRequest generationRequest = new DevExpress.AIIntegration.Reporting.Common.Extensions.PromptToReportRequest(userPrompt: prompt, dataSourceSchema: null, report: null) {
-'''         ReportGenerationHost = host
+'''         ReportGenerationHost = host,
+'''         FixLayoutErrors = true
 '''     };
 ''' 
 '''   ''' Cannot convert FieldDeclarationSyntax, System.ArgumentOutOfRangeException: Exception of type 'System.ArgumentOutOfRangeException' was thrown.
@@ -144,76 +145,76 @@
 '''     // Generate a report layout and save it to a REPX file.
 '''     DevExpress.XtraReports.UI.XtraReport report = await container.GeneratePromptToReportAsync(generationRequest, default);
 ''' 
-'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in 'report.SaveLayoutToXml' at character 2314
+'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in 'report.SaveLayoutToXml' at character 2347
 ''' 
 ''' 
 ''' Input:
 '''     report.SaveLayoutToXml
-'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in '(' at character 2336
+'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in '(' at character 2369
 ''' 
 ''' 
 ''' Input:
 ''' ("generatedReport.repx");
 ''' }
 ''' catch
-'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in '(Exception ex)' at character 2371
+'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in '(Exception ex)' at character 2404
 ''' 
 ''' 
 ''' Input:
 ''' (Exception ex) {
 ''' 
-'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in 'Console.ForegroundColor' at character 2393
+'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in 'Console.ForegroundColor' at character 2426
 ''' 
 ''' 
 ''' Input:
 '''     Console.ForegroundColor = 
-'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in 'ConsoleColor.Red' at character 2419
+'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in 'ConsoleColor.Red' at character 2452
 ''' 
 ''' 
 ''' Input:
 ''' ConsoleColor.Red;
 ''' 
-'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in 'Console.WriteLine' at character 2442
+'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in 'Console.WriteLine' at character 2475
 ''' 
 ''' 
 ''' Input:
 '''     Console.WriteLine
-'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in '(ex.Message)' at character 2459
+'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in '(ex.Message)' at character 2492
 ''' 
 ''' 
 ''' Input:
 ''' (ex.Message);
 ''' 
-'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in 'Console.ResetColor' at character 2478
+'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in 'Console.ResetColor' at character 2511
 ''' 
 ''' 
 ''' Input:
 '''     Console.ResetColor
-'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in '()' at character 2496
+'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in '()' at character 2529
 ''' 
 ''' 
 ''' Input:
 ''' ();
 ''' 
-'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in 'Console.WriteLine' at character 2505
+'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in 'Console.WriteLine' at character 2538
 ''' 
 ''' 
 ''' Input:
 '''     Console.WriteLine
-'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in '()' at character 2522
+'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in '()' at character 2555
 ''' 
 ''' 
 ''' Input:
 ''' ();
 ''' }
 ''' 
-'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in 'Console.ReadLine' at character 2532
+'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in 'Console.ReadLine' at character 2565
 ''' 
 ''' 
 ''' Input:
 ''' 
 ''' Console.ReadLine
-'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in '()' at character 2548
+'''   ''' Cannot convert IncompleteMemberSyntax, CONVERSION ERROR: Conversion for IncompleteMember not implemented, please report this issue in '()' at character 2581
 ''' 
 ''' 
 ''' Input:
