@@ -29,7 +29,8 @@ try {
 
     // Build a generation request from the user prompt.
     PromptToReportRequest generationRequest = new PromptToReportRequest(userPrompt: prompt, dataSourceSchema: null, report: null) {
-        ReportGenerationHost = host
+        ReportGenerationHost = host,
+        FixLayoutErrors = true
     };
 
     // Generate a report layout and save it to a REPX file.

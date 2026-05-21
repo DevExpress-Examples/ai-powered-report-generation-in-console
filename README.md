@@ -39,7 +39,7 @@ To implement report generation in your application, you must:
     // Create an Azure OpenAI client to work with the chat agent.
     IChatClient chatClient = new AzureOpenAIClient(new Uri(endpoint), new ApiKeyCredential(apiKey))
         .GetChatClient(deploymentName)
-        .AsIChatClient(); 
+        .AsIChatClient();
     ```
 
     For additional information, refer to the following help topic: [AI-powered Extensions — Register AI Clients](https://docs.devexpress.com/CoreLibraries/405204/ai-powered-extensions#register-ai-clients).
