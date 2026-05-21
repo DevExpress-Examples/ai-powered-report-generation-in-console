@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DevExpress.AIIntegration.Reporting;
+﻿using DevExpress.AIIntegration.Reporting;
 
 namespace Reporting.Generation.Console {
     public class ConsoleAIReportGenerationHost : IAIReportGenerationHost {
