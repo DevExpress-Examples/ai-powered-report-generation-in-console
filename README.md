@@ -58,7 +58,7 @@ To implement report generation in your application, you must:
 
 3. Create a class that implements [`IAIReportGenerationHost`](https://docs.devexpress.com/XtraReports/DevExpress.AIIntegration.Reporting.IAIReportGenerationHost) to handle clarification questions and to show progress/notifications:
 
-    Implement and supply a host for interactive workflows ([ConsoleAIReportGenerationHost.cs](CS/ConsoleAIReportGenerationHost.cs)).
+    Implement and supply a host for interactive workflows ([ConsoleAIReportGenerationHost.cs](CS/Reporting.Generation.Console/ConsoleAIReportGenerationHost.cs)).
 
     ```cs
     namespace Reporting.Generation.Console {
@@ -86,7 +86,7 @@ To implement report generation in your application, you must:
 
 4. Generate the report from a prompt.
 
-    In the [Program.cs](CS/Program.cs) file, create a [`PromptToReportRequest`](https://docs.devexpress.com/XtraReports/DevExpress.AIIntegration.Reporting.Common.Extensions.PromptToReportRequest) instance with the user prompt, assign the host, and specify additional settings. Call [`AIReportingIntegration.GeneratePromptToReportAsync`](https://docs.devexpress.com/XtraReports/DevExpress.AIIntegration.AIReportingIntegration.GeneratePromptToReportAsync(IAIExtensionsContainer--PromptToReportRequest--CancellationToken)) to obtain an [`XtraReport`](https://docs.devexpress.com/XtraReports/DevExpress.XtraReports.UI.XtraReport) instance.
+    In the [Program.cs](CS/Reporting.Generation.Console/Program.cs) file, create a [`PromptToReportRequest`](https://docs.devexpress.com/XtraReports/DevExpress.AIIntegration.Reporting.Common.Extensions.PromptToReportRequest) instance with the user prompt, assign the host, and specify additional settings. Call [`AIReportingIntegration.GeneratePromptToReportAsync`](https://docs.devexpress.com/XtraReports/DevExpress.AIIntegration.AIReportingIntegration.GeneratePromptToReportAsync(IAIExtensionsContainer--PromptToReportRequest--CancellationToken)) to obtain an [`XtraReport`](https://docs.devexpress.com/XtraReports/DevExpress.XtraReports.UI.XtraReport) instance.
 
     ```cs
     using Reporting.Generation.Console;
@@ -115,8 +115,8 @@ To implement report generation in your application, you must:
 
 ## Files to Review
 
-- [ConsoleAIReportGenerationHost.cs](CS/ConsoleAIReportGenerationHost.cs)/(VB: [ConsoleAIReportGenerationHost.vb](VB/ConsoleAIReportGenerationHost.vb))
-- [Program.cs](CS/Program.cs)/(VB: [Program.vb](VB/Program.vb))
+- [ConsoleAIReportGenerationHost.cs](CS/Reporting.Generation.Console/ConsoleAIReportGenerationHost.cs)/(VB: [ConsoleAIReportGenerationHost.vb](VB/Reporting.Generation.Console/ConsoleAIReportGenerationHost.vb))
+- [Program.cs](CS/Reporting.Generation.Console/Program.cs)/(VB: [Program.vb](VB/Reporting.Generation.Console/Program.vb))
 
 ## Documentation
 
