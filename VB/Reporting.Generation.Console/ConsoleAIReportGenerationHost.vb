@@ -18,7 +18,7 @@ Namespace Reporting.Generation.Console
         Private Const MenuInstructionsOffset As Integer = 2
 
         ' Request clarification from the user (choice list or free text).
-        Public Function ClarifyPromptAsync(ByVal request As PromptClarificationQuestion) As Task(Of PromptClarificationAnswer)
+        Public Function ClarifyPromptAsync(ByVal request As PromptClarificationQuestion) As Task(Of PromptClarificationAnswer) Implements IAIReportGenerationHost.ClarifyPromptAsync
             ClearStatusLines()
             Me.DisplayQuestion(request.Text)
             If request.Choices IsNot Nothing AndAlso request.Choices.Count > 0 Then
@@ -60,7 +60,7 @@ Namespace Reporting.Generation.Console
         Private Function HandleChoiceQuestion(ByVal choices As IReadOnlyList(Of String)) As Task(Of PromptClarificationAnswer)
             Dim selectedIndex = Me.ShowInteractiveMenu(choices)
             isFirstStatusLine = True
-            If selectedIndex Is -1 Then
+            If selectedIndex = -1 Then
                 Return Task.FromResult(PromptClarificationAnswer.Canceled())
             End If
 
@@ -104,7 +104,7 @@ Namespace Reporting.Generation.Console
         Private Sub RenderMenuItems(ByVal choices As IReadOnlyList(Of String), ByVal selectedIndex As Integer, ByVal startTop As Integer)
             For i As Integer = 0 To choices.Count - 1
                 System.Console.SetCursorPosition(0, startTop + MenuInstructionsOffset + i)
-                RenderMenuItem(choices(i), i Is selectedIndex)
+                RenderMenuItem(choices(i), i = selectedIndex)
             Next
         End Sub
 
