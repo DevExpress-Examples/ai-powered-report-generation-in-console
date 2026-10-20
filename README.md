@@ -6,7 +6,7 @@
 <!-- default badges end -->
 # DevExpress Reports - Generate a Report Based on a User Prompt Within a Console App
 
-This example integrates multi-agent report generation for a .NET 8 console application using Azure OpenAI.
+This example integrates multi-agent report generation for a .NET console application using Azure OpenAI.
 
 ![Console - Report Generation](images/console-app-report-generation.png)
 
@@ -16,7 +16,7 @@ The generated report is saved to the *generatedReport.repx* file.
     
 ## Prerequisites
 
-* .NET 8 SDK
+* .NET SDK
 * Azure OpenAI
 * The following NuGet packages should be installed in your project:
   * [`DevExpress.AIIntegration.Reporting.Common`](https://www.nuget.org/packages/DevExpress.AIIntegration.Reporting.Common/)
